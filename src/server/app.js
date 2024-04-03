@@ -3,6 +3,8 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
 dotenv.config()
+const mongoUri = process.env.MONGO_URI
+
 const app = express()
 
 app.use(express.json())
