@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const schema = mongoose.Schema
 
-const StudentSchema = new schema ({
+const UserSchema = new schema ({
     firstName : {type: String, required: true},
 
     lastName : {type: String, required: true},
@@ -13,4 +13,4 @@ const StudentSchema = new schema ({
 
 })
 
-export const studentModel = mongoose.model('Student', StudentSchema)
+export const userModel = mongoose.model('User', UserSchema)

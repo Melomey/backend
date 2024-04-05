@@ -9,6 +9,16 @@ const RequestSchema = new schema ({
 
     certificateType : {type: String, required: true},
 
+    // properties: {
+    //     status: {
+    //       type: string,
+    //       enum: ["verified", "not verified", "denied"],
+    //       default: not verified
+    //     }
+    //   },
+
+    university: {type: String, required: true}
+
 })
 
 export const requestModel = mongoose.model('Request', RequestSchema)
