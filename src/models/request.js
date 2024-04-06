@@ -9,15 +9,9 @@ const RequestSchema = new schema ({
 
     certificateType : {type: String, required: true},
 
-    // properties: {
-    //     status: {
-    //       type: string,
-    //       enum: ["verified", "not verified", "denied"],
-    //       default: not verified
-    //     }
-    //   },
+    university: {type: String, required: true},
 
-    university: {type: String, required: true}
+    status: { type: String, enum: ['verified', 'not verified', 'denied'], default: 'denied' }
 
 })
 
