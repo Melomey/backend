@@ -11,22 +11,22 @@ export const addRequest = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(404).send({ message: "Failed to sign in student" });
+        res.status(404).json({ message: "Failed to get request" });
     }
 }
 
 
 //get all requests
-export const findRequest = async (req, res) => {
+export const findRequests = async (req, res) => {
     try{
         const data = req.body
-        const findRequest = await requestModel.find(data)
+        const findRequests = await requestModel.find(data)
         console.log(data)
-        res.json(findRequest)
+        res.json(findRequests)
 
     } catch (error) {
         console.log(error)
-        res.status(404).send({ message: "Failed to sign in student" });
+        res.status(404).json({ message: "Failed to get request" });
     }
 }
 
@@ -40,6 +40,6 @@ export const getSpecificRequest = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(404).send({ message: "Failed to sign in student" });
+        res.status(404).json({ message: "Failed to get request" });
     }
 }
