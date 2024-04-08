@@ -25,7 +25,7 @@ export const addUser = async (req, res) => {
 
     } catch (error) {
         console.log(error)
-        res.status(500).json({ message: "Failed to sign in student" });
+        res.status(404).json({ message: "Failed to sign in student" });
     }
 }
 
