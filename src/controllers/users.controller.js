@@ -78,7 +78,7 @@ export const loginUser = async (req, res) => {
             lastName: loginUser.lastName,
             email: loginUser.email,
             password: loginUser.password
-        }, secretKey, {expiresIn:"1h"})
+        }, secretKey, {expiresIn:"7d"})
         //return response
         res.json({
             accessToken: token,
@@ -90,5 +90,15 @@ export const loginUser = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(404).json({ message: "Failed to login" });
+    }
+}
+
+export const logoutUser = (req, res) => {
+    try {
+        //success message indicating the user has been logged out.
+        res.status(200).json({ message: "User successfully logged out" });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "Failed to logout" });
     }
 }
