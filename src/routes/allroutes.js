@@ -11,7 +11,7 @@ router.post('/user', addUser)
 router.post('/login', loginUser)
 
 router.get('/user', getAllUsers) //took out the authenticateToken cos it want working
-router.get('/user:id', authenticateToken, getSpecificUser)
+router.get('/user/:id', authenticateToken, getSpecificUser)
 
 //requests
 router.post('/request', addRequest)
