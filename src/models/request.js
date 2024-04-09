@@ -11,7 +11,7 @@ const RequestSchema = new schema ({
 
     university: {type: String, required: true},
 
-    status: { type: String, enum: ['verified', 'not verified', 'denied'], default: 'denied' }
+    status: { type: String, enum: ['verified', 'not verified', 'denied'], default: 'not verified' }
 
 })
 
