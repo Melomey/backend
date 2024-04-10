@@ -10,13 +10,13 @@ export const router = Router()
 router.post('/user', addUser)
 router.post('/login', loginUser)
 
-router.get('/user', getAllUsers) //took out the authenticateToken cos it want working
+router.get('/user',authenticateToken, getAllUsers) //took out the authenticateToken cos it want working
 router.get('/user/:id', authenticateToken, getSpecificUser)
 
 //requests
 router.post('/request', addRequest)
 router.get('/request', authenticateToken, findRequests)
-router.get('/request:id', authenticateToken, getSpecificRequest)
+router.get('/request/:id', authenticateToken, getSpecificRequest)
 
 
 
