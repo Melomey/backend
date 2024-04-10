@@ -49,7 +49,7 @@ export const getAllUsers = async (req, res) => {
 export const getSpecificUser = async (req, res) => {
     try {
         const getSpecificUser = await userModel.findById(req.params.id)
-        console.log(data)
+        console.log(getSpecificUser)
         res.json(getSpecificUser)
 
     } catch (error) {

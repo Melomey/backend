@@ -35,7 +35,7 @@ export const getSpecificRequest = async (req, res) => {
     try{
         
         const getSpecificRequest = await requestModel.findById(req.params.id)
-        console.log(data)
+        console.log(getSpecificRequest)
         res.json(getSpecificRequest)
 
     } catch (error) {
