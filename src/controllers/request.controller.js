@@ -3,9 +3,9 @@ import { requestModel } from "../models/request.js"
 
 //add requests
 export const addRequest = async (req, res) => {
-    try{
+    try {
         const data = req.body
-        const addRequest = await requestModel.create(data)
+        const addRequest = await requestModel.create({ ...data, userId: req.user._id })
         console.log(data)
         res.json(addRequest)
 
@@ -18,7 +18,7 @@ export const addRequest = async (req, res) => {
 
 //get all requests
 export const findRequests = async (req, res) => {
-    try{
+    try {
         const data = req.body
         const findRequests = await requestModel.find(data)
         console.log(data)
@@ -32,8 +32,8 @@ export const findRequests = async (req, res) => {
 
 //get a specific request
 export const getSpecificRequest = async (req, res) => {
-    try{
-        
+    try {
+
         const getSpecificRequest = await requestModel.findById(req.params.id)
         console.log(getSpecificRequest)
         res.json(getSpecificRequest)

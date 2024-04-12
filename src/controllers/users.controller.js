@@ -1,6 +1,7 @@
 import { userModel } from "../models/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { tokenModel } from "../models/token.js";
 
 const saltRounds = 10;
 
@@ -64,21 +65,23 @@ export const loginUser = async (req, res) => {
         const loginUser = await userModel.findOne({ email: req.body.email });
         //check if user exists 
         if (!loginUser) {
-            return res.status(404).json({ message: "User not found"})
+            return res.status(404).json({ message: "User not found" })
         }
         //compare password to hash password
         const correctPassword = await bcrypt.compare(req.body.password, loginUser.password)
         //check if password is correct
         if (!correctPassword) {
-            return res.status(401).json({message: "Invalid password"})
+            return res.status(401).json({ message: "Invalid password" })
         }
         //generate access token for user
         const token = jwt.sign({
+            _id: loginUser._id,
             firstName: loginUser.firstName,
             lastName: loginUser.lastName,
-            email: loginUser.email,
-            password: loginUser.password
-        }, secretKey, {expiresIn:"7d"})
+            email: loginUser.email
+        }, secretKey, { expiresIn: "7d" })
+        // save token in database
+        await tokenModel.create({ accessToken: token });
         //return response
         res.json({
             accessToken: token,
@@ -93,8 +96,11 @@ export const loginUser = async (req, res) => {
     }
 }
 
-export const logoutUser = (req, res) => {
+//work on it
+export const logoutUser = async (req, res) => {
     try {
+        // wipe/delete token from database
+        await tokenModel.deleteMany({ accessToken: req.token })
         //success message indicating the user has been logged out.
         res.status(200).json({ message: "User successfully logged out" });
     } catch (error) {

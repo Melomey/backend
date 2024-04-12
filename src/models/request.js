@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const schema = mongoose.Schema
 
+
 const RequestSchema = new schema ({
+    //add user reference
+    userId: { type: schema.Types.ObjectId, ref: 'User', required: true },
+
     fullName : {type: String, required: true},
 
     email : {type: String, required: true},
