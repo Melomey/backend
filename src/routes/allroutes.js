@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addUser, getAllUsers, getSpecificUser, loginUser } from "../controllers/users.controller.js";
+import { addUser, getAllUsers, getSpecificUser, loginUser,logoutUser } from "../controllers/users.controller.js";
 import { addRequest, findRequests, getSpecificRequest, } from "../controllers/request.controller.js";
 import { authenticateToken } from "../middlewares/auth.middleware.js";
 
