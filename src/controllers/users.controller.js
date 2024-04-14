@@ -59,6 +59,22 @@ export const getSpecificUser = async (req, res) => {
     }
 }
 
+//update specific user
+export const updateUser = async (req, res) => {
+    try {
+        var query = {'email': req.body.formerEmail};
+        console.log('body', req.body.update);
+
+        let updateThisUser = await userModel.findOneAndUpdate(query, req.body.update, {upsert: true});
+        console.log(updateThisUser)
+
+        res.status(200).json({ message: "User successfully updated" });
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({ message: "Failed to update user" });
+    }
+}
+
 export const loginUser = async (req, res) => {
     try {
         //find user with provided email
