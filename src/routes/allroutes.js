@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addUser, getAllUsers, getSpecificUser, loginUser, logoutUser } from "../controllers/users.controller.js";
+import { addUser, getAllUsers, getSpecificUser, loginUser, logoutUser, updateUser } from "../controllers/users.controller.js";
 import { addRequest, findRequests, getSpecificRequest, } from "../controllers/request.controller.js";
 import { authenticateToken } from "../middlewares/auth.middleware.js";
 
@@ -11,7 +11,8 @@ router.post('/users', addUser)
 router.post('/login', loginUser)
 router.post('/logout', authenticateToken, logoutUser);
 
-router.get('/users', authenticateToken, getAllUsers)
+router.get('/users', authenticateToken, getAllUsers);
+router.patch('/user', authenticateToken, updateUser);
 router.get('/users/:id', authenticateToken, getSpecificUser)
 
 //requests
