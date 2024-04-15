@@ -100,6 +100,7 @@ export const loginUser = async (req, res) => {
         await tokenModel.create({ accessToken: token });
         //return response
         res.json({
+            _id: loginUser._id,
             accessToken: token,
             firstName: loginUser.firstName,
             lastName: loginUser.lastName,
