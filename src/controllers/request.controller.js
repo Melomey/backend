@@ -19,11 +19,12 @@ export const addRequest = async (req, res) => {
 //get all requests  
 export const findRequests = async (req, res) => {
   try {
-    const data = req.body;
+    const data = req.params.fullName;
+    console.log('data', data)
     const findRequests = await requestModel
-      .find(data)
+      .find({fullName:data})
       .populate("userId", ["_id", "firstName", "lastName", "email"]);
-    console.log(data);
+    console.log('request',findRequests);
     res.json(findRequests);
   } catch (error) {
     console.log(error);
