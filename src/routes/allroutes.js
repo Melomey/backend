@@ -18,7 +18,10 @@ router.get('/users/:id', authenticateToken, getSpecificUser)
 //requests
 router.post('/requests', authenticateToken, addRequest)
 
+
 router.get('/requests/:fullName', findRequests)
+router.get('/partner-requests',  findRequests)
+router.get('/requests', authenticateToken, findRequests)
 router.get('/requests/:id', authenticateToken, getSpecificRequest)
 
 
