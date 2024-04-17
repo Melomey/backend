@@ -16,21 +16,19 @@ export const addRequest = async (req, res) => {
   }
 };
 
-// //get all user's requests  
-// export const userRequests = async (req, res) => {
-//   try {
-//     const data = req.body;
-//     const userRequests = await requestModel
-//       .find(data)
-//       .populate("userId", ["_id", "firstName", "lastName", "email"]);
-//     console.log(data);
-//     res.json(userRequests);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(404).json({ message: "Failed to get your request" });
-//   }
-// };
-
+// //get all requests
+export const allRequests = async (req, res) => {
+    try {
+        const data = req.body
+        const allRequests = await requestModel.find(data)
+        console.log(data)
+        res.json(allRequests)
+        res.status(201).json({message: 'Form submitted successfully'});
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({ message: "Failed to get request" });
+    }
+}
 
 //get all requests
 export const findRequests = async (req, res) => {
