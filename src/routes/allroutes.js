@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { addUser, getAllUsers, getSpecificUser, loginUser, logoutUser, updateUser } from "../controllers/users.controller.js";
-import { addRequest, findRequests, getSpecificRequest, } from "../controllers/request.controller.js";
+import { addRequest, findRequests, getSpecificRequest,allRequests } from "../controllers/request.controller.js";
 import { authenticateToken } from "../middlewares/auth.middleware.js";
 
 
@@ -22,6 +22,10 @@ router.post('/requests', authenticateToken, addRequest)
 router.get('/requests/:fullName', findRequests)
 router.get('/partner-requests',  findRequests)
 router.get('/requests', authenticateToken, findRequests)
+
+router.get('/requests/:fullName', findRequests)
+router.get('/partner-requests',  findRequests)
+router.get('/requests', authenticateToken, allRequests)
 router.get('/requests/:id', authenticateToken, getSpecificRequest)
 
 
