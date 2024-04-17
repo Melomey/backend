@@ -16,7 +16,7 @@ export const addRequest = async (req, res) => {
   }
 };
 
-//get all requests  //all requests from a specific user // populate(function)// add all the user to each of the post the user has made  // comparing id's
+//get all requests  
 export const findRequests = async (req, res) => {
   try {
     const data = req.body;
