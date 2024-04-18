@@ -16,21 +16,20 @@ export const addRequest = async (req, res) => {
   }
 };
 
-// //get all requests
+// //get specific requests
 export const allRequests = async (req, res) => {
-    try {
-        const data = req.body
-        const allRequests = await requestModel.find(data)
-        console.log(data)
-        res.json(allRequests)
-        res.status(201).json({message: 'Form submitted successfully'});
-    } catch (error) {
-        console.log(error)
-        res.status(404).json({ message: "Failed to get request" });
-    }
+  try {
+    const filter = req.query
+    const allRequests = await requestModel.find(filter)
+    console.log(filter)
+    res.json(allRequests)
+  } catch (error) {
+    console.log(error)
+    res.status(404).json({ message: "Failed to get request" });
+  }
 }
 
-//get all requests
+//search for requests
 export const findRequests = async (req, res) => {
   try {
     const data = req.params.fullName;
